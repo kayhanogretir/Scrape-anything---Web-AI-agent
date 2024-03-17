@@ -6,10 +6,18 @@ const url = process.argv[2];
 const timeout = 5000;
 
 (async () => {
+
+    // get environment variables
+    const env = process.env;
+
+    console.log(env);
+
+    env
+
     const browser = await puppeteer.launch( {
         headless: "false",
         executablePath: '/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary',
-        userDataDir: '/Users/jasonzhou/Library/Application\ Support/Google/Chrome\ Canary/Default',
+        userDataDir: env.CHROME_PROFILE_DIR,
     } );
 
     const page = await browser.newPage();
